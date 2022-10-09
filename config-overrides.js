@@ -13,7 +13,8 @@ module.exports = function override(config, env) {
         path: require.resolve('path'),
         tls: require.resolve('tls'),
         net: require.resolve('net'),
-        zlib: false
+        zlib: false,
+        request: false
     };
     config.plugins.push(
         new webpack.ProvidePlugin({

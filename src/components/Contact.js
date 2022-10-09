@@ -8,8 +8,6 @@ import linkedinLogo from '../assets/linkedin.svg';
 import phoneLogo from '../assets/phone.svg';
 import emailLogo from '../assets/mail.svg';
 
-
-
 const Contact = () => {
   const [contract, setContract] = useState(null);
   const [network, setNetwork] = useState(null);

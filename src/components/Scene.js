@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from "react";
+import {useRef, useEffect} from "react";
 import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -7,7 +7,6 @@ const modelPath = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy_li
 
 const Scene = () => {
     const mount = useRef(null);
-    const [coord, setCoord] = useState({x: null, y: null});
 
     useEffect(() => {
         // BUILDING THE SCENE
