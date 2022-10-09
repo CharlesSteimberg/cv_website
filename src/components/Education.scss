@@ -1,0 +1,227 @@
+.Education{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: block;
+    h1{
+        margin: 0;
+        padding: 0;
+        padding-top: 15vh;
+        padding-left: 25px;
+        font-size: 23px;
+        font-weight: 300;
+        text-align: center;
+        text-decoration: underline;
+        text-underline-offset: 8px;
+    }
+    .EdBox{
+        position: relative;
+        display: flex;
+        top: 2vh;
+        width: 90vw;
+        height: 79vh;
+        margin: auto;
+        .Ed{
+            cursor: pointer;
+            user-select: none;
+            touch-action: none;
+            pointer-events: all;
+            width: 25%;
+            height: 80%;
+            margin: auto;
+            padding: 0;
+            border-radius: 30px;
+            .EdHead{
+                border-radius: 30px;
+                width: 100%;
+                height: 40%;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                position: relative;
+                img{
+                    transition: all .6s ease-in-out;
+                    position: relative;
+                    z-index: 197;
+                    top: 0;
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    pointer-events: none;
+                }
+                .topic{ 
+                    transition: all .6s ease-in-out;
+                    position: absolute;
+                    z-index: 199;
+                    top: 15px;
+                    left: 15px;
+                    margin: 0;
+                    width: fit-content;
+                    font-size: 15px;
+                    padding: 6px;
+                    border-radius: 50px;
+                    border: 1px solid white;
+                }
+            }
+            .EdBody{
+                margin: 0;
+                padding: 0;
+                position: relative;
+                top: -20%;
+                z-index: 198;
+                border-radius: 30px;
+                width: 100%;
+                height: 55%;
+                overflow: hidden;
+                h2{
+                    padding-left: 15px;
+                    padding-top: 20px;
+                    padding-right: 15px;
+                    font-size: calc(14px + 0.2vw);
+                    font-weight: 500;
+                }
+                h4{
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    font-size: calc(12px + 0.2vw);
+                    font-weight: 500;
+                }
+                p{
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    font-size: calc(12px + 0.2vw);
+                    font-weight: 340;
+                }
+                ul{
+                    display: flex;
+                    flex-direction: column;
+                    li{
+                        padding-left: 0;
+                        font-size: calc(11px + 0.2vw);
+                        font-weight: 300;
+                        display: inline-block;
+                        flex: 1;
+                    }
+                }
+                .Fading{
+                    width: 100%;
+                    height: 40%;
+                    position: absolute;
+                    border-bottom-left-radius: 30px;
+                    border-bottom-right-radius: 30px;
+                    bottom: 0;
+                    z-index: 199;
+                }
+            }
+            &:hover, &:active{
+                .topic{ 
+                    background-color: var(--background-color);
+                    border: none;
+                }
+                img{
+                    transform: scale(1.2);
+                }
+                .EdBody{
+                    height: 75%;
+                    transition:  .6s ease-in-out;
+                    .Fading{
+                        transition:  1s ease-in-out;
+                        height: 1%;
+                    }
+                }
+            }
+        }
+        #Ed01{
+            .EdBody{
+                background-color: var(--color-2);
+                .Fading{
+                    background-image: linear-gradient(to top, var(--color-2), rgba(255, 255, 255, 0));
+                }
+            }
+        }
+        #Ed02{
+            .EdBody{
+                background-color: var(--color-3);
+                .Fading{
+                    background-image: linear-gradient(to top, var(--color-3), rgba(255, 255, 255, 0));
+                }
+            }
+        }
+        #Ed03{
+            .EdBody{
+                background-color: var(--color-1);
+                .Fading{
+                    background-image: linear-gradient(to top, var(--color-1), rgba(255, 255, 255, 0));
+                }
+            }
+        }
+        #Ed03:hover, #Ed03:active{
+            .Education{
+                height: 200vh;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:980px) {
+    .Education{
+        .EdBox{
+            width: 95vw;
+            .Ed{
+                width: 29%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:912px) {
+    .Education{
+        scroll-behavior: smooth; 
+        display:block;
+        .EdBox{
+            flex-direction: column;
+
+            .Ed{
+                width: 85%;
+                height: 40%;
+                flex: 1 1 30%;  
+                overflow: hidden;
+                transition: flex 0.6s;
+                .Fading{
+                        transition:  1s ease-in-out;
+                        height: 1%;
+                    }
+                .EdHead{
+                    height: 60%;
+                    .topic{
+                        top: 2px;
+                        padding:3px;
+                    }
+                    h4{
+                        font-size: 13px;
+                    }
+                    h2{
+                        font-size: 14px;
+                    }
+                    p{
+                        font-size: 13px;
+                    }
+                }
+                .EdBody{
+                    top: -35%;
+                    h2{
+                        padding-top: 1%;
+                    }
+                }
+                &:hover, &:active{
+                    flex: 1 1 74%;
+                    .EdBody{
+                        top: -43%;
+                        height: 70%;
+                    }
+                }
+            }
+        }
+    }
+}

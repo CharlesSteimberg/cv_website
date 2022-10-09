@@ -1,0 +1,263 @@
+.Experience{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: block;
+    h1{
+        margin: 0;
+        padding: 0;
+        padding-top: 15vh;
+        padding-left: 25px;
+        font-size: 23px;
+        font-weight: 300;
+        text-align: center;
+        text-decoration: underline;
+        text-underline-offset: 8px;
+    }
+    #next{
+        right: 0;
+      }
+
+    $transition-time: .15s;
+    .RightArrow, .LeftArrow {
+        display: none;
+        z-index: 999;
+        cursor: pointer;
+        height: 120px;
+        position: absolute;
+        margin-top: 30vh;
+        transition: transform .1s;
+        width: 40px;
+        span {
+            top: 50%;
+            position: absolute;
+            display: block;
+            width: 15px;
+            height: 3px;
+            border-radius: 2px;
+            background-color: white;
+            position: absolute;
+            width: 100%;
+            
+            &:after {
+                background-color: rgb(203, 203, 203);
+                content: '';
+                height: 100%;
+                position: absolute;
+                top: 0;
+                transition: all $transition-time;
+            }
+        }
+
+        &:active {
+          transform: scale(0.9);
+        }
+    }
+    .RightArrow{
+        right: 10px;
+        span{
+            &:first-of-type {
+                transform: rotate(45deg);
+                transform-origin: bottom right;
+                
+                &:after {
+                  left: 100%;
+                  right: 0;
+                  transition-delay: 0s;
+                }
+            }   
+            &:last-of-type {
+                transform: rotate(-45deg);
+                transform-origin: top right;
+                
+                &:after {
+                  left: 0;
+                  right: 100%;
+                  transition-delay: $transition-time;
+                }
+            }
+        }
+    }
+    .LeftArrow{
+        left: 10px;
+        span{
+            &:first-of-type {
+                transform: rotate(45deg);
+                transform-origin: top left;
+                
+                &:after {
+                left: 100%;
+                right: 0;
+                transition-delay: 0s;
+                }
+            }   
+            &:last-of-type {
+                transform: rotate(-45deg);
+                transform-origin: bottom left;
+                
+                &:after {
+                left: 0;
+                right: 100%;
+                transition-delay: $transition-time;
+                }
+            }
+        }
+    }
+    .Pagination{
+        display: none;
+        font-size: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+        margin-top: 2vh;
+        padding: 0;
+        width: 100vw;
+        .LittleDot {
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 100%;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 12px;
+            position: relative;
+            z-index: 998;
+            }
+        .BigDot {
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            background: #437697;
+            position: absolute;
+            z-index: 999;
+            }
+    }
+    .ExpBox{
+        height: 75vh;
+        margin-top: 4vh;
+        padding: 0;
+        width: 100vw;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+        z-index: 0;
+        display: block;
+        overflow-x: hidden;
+        #Exp01{
+            .ExpBody{
+                background-color: var(--color-1);
+            }
+        }
+        #Exp02{
+            .ExpBody{
+                background-color: var(--color-2);
+            }
+        }
+        #Exp03{
+            .ExpBody{
+                background-color: var(--color-1);
+            }
+        }
+        #Exp04{
+            .ExpBody{
+                background-color: var(--color-2);
+            }
+        }
+        #Exp05{
+            .ExpBody{
+                background-color: var(--color-3);
+            }
+        }
+        .Exp{
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+            pointer-events: all;
+            width: 270px;
+            height: 430px;
+            margin: 0;
+            padding: 0;
+            border-radius: 30px;
+            position: absolute;
+            .ExpHead{
+                border-radius: 30px;
+                width: 100%;
+                height: 50%;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    pointer-events: none;
+                }
+                ul{ 
+                    margin: 0;
+                    padding: 0;
+                    position: absolute;
+                    top: 11px;
+                    left: 10px;
+                    display: flex;
+                    list-style-type: none;
+                    gap: 10px;
+                    li{
+                        font-size: 15px;
+                        padding: 5px;
+                        border-radius: 50px;
+                        border: 1px solid white;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .ExpBody{
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                top: 30%;
+                left: 0px;
+                border-radius: 30px;
+                width: 100%;
+                height: 65%;
+                h2{
+                    padding-left: 15px;
+                    padding-top: 20px;
+                    padding-right: 15px;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+                h4{
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+                p{
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    font-size: 16px;
+                    font-weight: 340;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:940px) {
+    .Experience{
+        h1{
+            font-size: 20px;
+            padding-top: 12vh;
+        }
+        .RightArrow, .LeftArrow {
+            display: block;
+        }
+        .Pagination{
+            display: block;
+        }
+    }
+}

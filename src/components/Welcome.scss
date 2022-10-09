@@ -1,0 +1,50 @@
+.Welcome{
+    width: 100%;
+    height: 100vh;
+    margin-top: -10vh;
+    padding: 0;
+    .Intro{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60%;
+        font-size: calc(100% + 0.5vw);
+        font-weight: 250;
+        padding-left: 5vw;
+        padding-top: 25vh;
+        z-index: 9;
+    }
+    .ProfilePic{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40%;
+        height: 100%;
+        .Scene{
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width:940px) {
+.Welcome{  
+    display: block;
+    .Intro{
+        width: 100%;
+        padding: 0;
+        padding-top: 16vh;
+        text-align: center;
+        height: auto;
+        font-size: calc(100% + 0.06vw);
+        z-index: 10;
+        overflow-x: hidden;
+    }
+    .ProfilePic{
+        height: 60vh;
+        width: 100%;
+        top: auto;
+        bottom: 0;
+        z-index: 9;
+    }
+}
+}

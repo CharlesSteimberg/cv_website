@@ -1,0 +1,116 @@
+.Header{
+    width: 100%;
+    display: flex;  
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    height: 10vh;
+    z-index: 997;
+    background: linear-gradient(#1B1B1D, 65%,rgba(0,0,0,0));
+
+    .Logo{  
+        margin: 0;
+        padding: 0;
+        padding-left: 25px;
+        padding-top: 15px;
+        width: 72px;
+    }
+
+    .Hamburger{
+        margin: 0;
+        margin-right: 25px;
+        display: none;
+        padding: 15px;
+        cursor: pointer;
+        z-index: 999;
+        transform: scale(1.5);
+        transition: transform .1s;
+        span {
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            border-radius: 1px;
+            transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965);
+            &:first-of-type {
+                top: 6px;
+            }   
+            &:last-of-type {
+                bottom: 6px;
+            }
+        }
+        &:active {
+            transform: scale(1.2);
+          }
+    }
+    .HeaderList{
+        display:flex;
+        list-style-type: none;
+        padding-right: 15px;
+        gap: 20px;
+        li{
+            margin: auto auto;
+            a{
+                cursor: pointer;
+                color: rgb(182, 182, 182);
+                font-size: 23px;
+                font-weight: 300;
+                text-decoration: none;
+            }
+            a:hover{
+                color: white;
+            }
+            a.active{
+                color: white;
+                border-bottom: 2px solid white;
+                padding-bottom: 3px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:940px) {
+    .Header {
+        .Hamburger {
+            display: block;
+        }
+
+        .HeaderList {
+            position:fixed;
+            top: -100%;
+            width: 100%;
+            flex-direction: column;
+            background: linear-gradient(#1B1B1D, 70%,rgba(0,0,0,0));
+            height: 100vh;
+            z-index: 998;
+            text-align: center;
+            transition: 0.8s;
+            padding: 0;
+            padding-top: 20px;
+            li{  
+                margin: 0.5rem 0;
+            }
+        }
+    }
+    .Header.active {
+        .HeaderList {
+            margin: 0;
+            top: 0;
+        }
+        span {
+            &:first-of-type {
+                transform: rotate(45deg);
+                top: 14px;
+            }
+            &:last-of-type {
+                transform: rotate(-45deg);
+                bottom: 14px;
+            }
+        }
+    }
+}
+
