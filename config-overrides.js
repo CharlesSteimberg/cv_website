@@ -11,10 +11,10 @@ module.exports = function override(config, env) {
         buffer: require.resolve('buffer'),
         stream: require.resolve('stream-browserify'),
         path: require.resolve('path'),
+        request: require.resolve('request'),
         tls: require.resolve('tls'),
         net: require.resolve('net'),
-        zlib: false,
-        request: false
+        zlib: false
     };
     config.plugins.push(
         new webpack.ProvidePlugin({
