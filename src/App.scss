@@ -1,7 +1,7 @@
 :root {
   --background-color: #1B1B1D;
   --font-color: white;
-  --color-1: rgb(209, 78, 91);
+  --color-1: rgb(208, 76, 89);
   --color-2: #437697;
   --color-3: #97c4c6;
   --color-4: ;
@@ -21,8 +21,95 @@ body {
         margin:0;
     }
 }
+
 *{
   box-sizing: border-box;
   -webkit-font-smoothing: inherit;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.Loading-Screen {
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 250;
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+.Loader  {
+  animation: rotate 1s infinite;  
+  height: 50px;
+  width: 50px;
+  &:before,&:after {   
+      border-radius: 50%;
+      content: '';
+      display: block;
+      height: 20px;  
+      width: 20px;
+  }
+  &:before {
+      animation: ball1 1s infinite;  
+      background-color: var(--color-3);
+      box-shadow: 30px 0 0 var(--color-2);
+      margin-bottom: 10px;
+  }
+  &:after {
+      animation: ball2 1s infinite; 
+      background-color: var(--color-3);
+      box-shadow: 30px 0 0 var(--color-1);
+  }
+
+  @keyframes rotate {
+      0% { 
+      -webkit-transform: rotate(0deg) scale(0.8); 
+      -moz-transform: rotate(0deg) scale(0.8);
+      }
+      50% { 
+      -webkit-transform: rotate(360deg) scale(1.2); 
+      -moz-transform: rotate(360deg) scale(1.2);
+      }
+      100% { 
+      -webkit-transform: rotate(720deg) scale(0.8); 
+      -moz-transform: rotate(720deg) scale(0.8);
+      }
+  }
+  @keyframes ball1 {
+      0% {
+      box-shadow: 30px 0 0 var(--color-2);
+      }
+      50% {
+      box-shadow: 0 0 0 var(--color-2);
+      margin-bottom: 0;
+      -webkit-transform: translate(15px,15px);
+      -moz-transform: translate(15px, 15px);
+      }
+      100% {
+      box-shadow: 30px 0 0 var(--color-2);
+      margin-bottom: 10px;
+      }
+  }
+  @keyframes ball2 {
+      0% {
+      box-shadow: 30px 0 0 var(--color-1);
+      }
+      50% {
+      box-shadow: 0 0 0 var(--color-1);
+      margin-top: -20px;
+      -webkit-transform: translate(15px,15px);
+      -moz-transform: translate(15px, 15px);
+      }
+      100% {
+      box-shadow: 30px 0 0 var(--color-1);
+      margin-top: 0;
+      }
+  }
 }

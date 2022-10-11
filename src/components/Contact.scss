@@ -13,12 +13,10 @@
             top: 11vh;
             width: 80vw; 
             height: 90vh;
-            padding: 0;
+            padding-left: 10%;
+            padding-right: 10%;
             margin: 0;
-            text-align: center;
             p{
-                padding-left: 12vw;
-                padding-right: 12vw;
                 font-weight: 320;
                 font-size: calc(80% + 0.1vw);
                 span{
@@ -53,10 +51,17 @@
                 opacity: 1;
                 text-indent: 0px;
             }
-            img{
-                padding: 3vh;
-                width: calc(50% + 20vw);
-                max-height: 60vh;
+            .Business-Card{
+                padding: 0;
+                margin: 0;
+                margin-top: 2%;
+                margin-bottom: 2%;
+                width: 100%;
+                height: 60%;
+                .Scene{
+                    height: 100%;
+                    width: 100%;
+                }
             }
             .Dynamic-Connect{
                 align-items: center;
@@ -97,76 +102,7 @@
                         background: none;
                     }
                 }
-                .Loader  {
-                    animation: rotate 1s infinite;  
-                    height: 50px;
-                    width: 50px;
-                    &:before,&:after {   
-                        border-radius: 50%;
-                        content: '';
-                        display: block;
-                        height: 20px;  
-                        width: 20px;
-                    }
-                    &:before {
-                        animation: ball1 1s infinite;  
-                        background-color: var(--color-3);
-                        box-shadow: 30px 0 0 var(--color-2);
-                        margin-bottom: 10px;
-                    }
-                    &:after {
-                        animation: ball2 1s infinite; 
-                        background-color: var(--color-3);
-                        box-shadow: 30px 0 0 var(--color-1);
-                    }
-                  
-                    @keyframes rotate {
-                        0% { 
-                        -webkit-transform: rotate(0deg) scale(0.8); 
-                        -moz-transform: rotate(0deg) scale(0.8);
-                        }
-                        50% { 
-                        -webkit-transform: rotate(360deg) scale(1.2); 
-                        -moz-transform: rotate(360deg) scale(1.2);
-                        }
-                        100% { 
-                        -webkit-transform: rotate(720deg) scale(0.8); 
-                        -moz-transform: rotate(720deg) scale(0.8);
-                        }
-                    }
-                    @keyframes ball1 {
-                        0% {
-                        box-shadow: 30px 0 0 var(--color-2);
-                        }
-                        50% {
-                        box-shadow: 0 0 0 var(--color-2);
-                        margin-bottom: 0;
-                        -webkit-transform: translate(15px,15px);
-                        -moz-transform: translate(15px, 15px);
-                        }
-                        100% {
-                        box-shadow: 30px 0 0 var(--color-2);
-                        margin-bottom: 10px;
-                        }
-                    }
-                    @keyframes ball2 {
-                        0% {
-                        box-shadow: 30px 0 0 var(--color-1);
-                        }
-                        50% {
-                        box-shadow: 0 0 0 var(--color-1);
-                        margin-top: -20px;
-                        -webkit-transform: translate(15px,15px);
-                        -moz-transform: translate(15px, 15px);
-                        }
-                        100% {
-                        box-shadow: 30px 0 0 var(--color-1);
-                        margin-top: 0;
-                        }
-                    }
-                  }
             }
-            
         }
         .Contact-Boxes{
             position: absolute;

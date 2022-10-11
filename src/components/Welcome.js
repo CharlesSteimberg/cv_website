@@ -2,7 +2,12 @@ import './Welcome.scss';
 import Typer from './Typer';
 import Scene from './Scene';
 
-const Welcome = () => {
+const Welcome = ({incrementLoaded}) => {
+
+  const props = {
+    incrementLoaded: incrementLoaded,
+    type: "character"
+   };
 
   return(
     <div className="Welcome" id="Welcome">
@@ -13,8 +18,8 @@ const Welcome = () => {
         ]}
       />
       </div>
-      <div className="ProfilePic" id="testouille">
-        <Scene />
+      <div className="ProfilePic">
+        <Scene type="character" props={props}/>
       </div>
     </div>
   )

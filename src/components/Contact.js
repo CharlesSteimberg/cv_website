@@ -7,8 +7,9 @@ import { Biconomy } from "@biconomy/mexa";
 import linkedinLogo from '../assets/linkedin.svg';
 import phoneLogo from '../assets/phone.svg';
 import emailLogo from '../assets/mail.svg';
+import Scene from './Scene';
 
-const Contact = () => {
+const Contact = ({incrementLoaded}) => {
   const [contract, setContract] = useState(null);
   const [network, setNetwork] = useState(null);
   const [currentAccount, setCurrentAccount] = useState(null);
@@ -17,6 +18,11 @@ const Contact = () => {
   const chainId = 137; //80001; to switch to testnet mumbai
   const tokenId = 1;
   const [biconomy, setBiconomy] = useState(false);
+
+  const props = {
+    incrementLoaded: incrementLoaded,
+    type: "businessCard"
+   };
 
   useEffect(() => {
     setBiconomyContract();
@@ -217,7 +223,7 @@ const Contact = () => {
     <div className="NFT-Contact">
       <div className="NFT">
         <p className= "Intro-text">On my spare time, I like playing piano, riding my motorbike, taking good care of my numerous plants but also shipping blockchain & Web3 related projects. To thank you for your visit, get your free NFT Business Card below.</p>
-        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/51542251168899.58e4d1266384a.gif" alt="Business card GIF" />
+        <div className="Business-Card"><Scene props={props}/></div>
         {renderContent()}
       </div>
       <div className="Contact-Boxes">

@@ -5,8 +5,10 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const modelPath = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy_lightweight.glb';
 
-const Scene = () => {
+const Scene = ({props}) => {
     const mount = useRef(null);
+    const character = (props.type === "character" ? true : false);
+    const businessCard = (props.type === "businessCard" ? true : false);
 
     useEffect(() => {
         // BUILDING THE SCENE
@@ -24,7 +26,12 @@ const Scene = () => {
         camera.position.z = 3; // is used here to set some distance from a cube that is located at z = 0
 
         // OrbitControls allow a camera to orbit around the object
-        //const controls = new OrbitControls( camera, mount.current );
+        if(businessCard) {
+            const controls = new OrbitControls( camera, mount.current )
+            controls.minDistance = 1;
+            controls.maxDistance = 8;
+        }; 
+
         const clock = new THREE.Clock();
         const renderer = new THREE.WebGLRenderer({antialias: true });
         renderer.setSize( width, height );
@@ -32,56 +39,66 @@ const Scene = () => {
         renderer.setPixelRatio(window.devicePixelRatio);
         mount.current.appendChild( renderer.domElement );
 
-        //ADDING ELEMENTS
-        let stacy_txt = new THREE.TextureLoader().load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy.jpg');
-
-        stacy_txt.flipY = false; // we flip the texture so that its the right way up
-
-        const stacy_mtl = new THREE.MeshPhongMaterial({
-            map: stacy_txt,
-            color: 0xffffff
-        });
-
         //load model
         var mixer;
         var neck;
         var waist;
+        var cube;
         const loader = new GLTFLoader();
-        loader.load(
-            modelPath,
-            ( gltf ) => {
-                const model = gltf.scene;
-                const fileAnimations = gltf.animations;
-                model.traverse(o => {
-                    if (o.isMesh) {
-                        o.castShadow = true;
-                        o.receiveShadow = true;
-                        o.material = stacy_mtl;
-                    }
-                    // Reference the neck and waist bones
-                    if (o.isBone && o.name === 'mixamorigNeck') { 
-                        neck = o;
-                    }
-                    if (o.isBone && o.name === 'mixamorigSpine') { 
-                        waist = o;
-                    }
-                    });
-                model.position.y = -1;
-                scene.add(model);
-                mixer = new THREE.AnimationMixer(model);
-                const idleAnim = THREE.AnimationClip.findByName(fileAnimations, 'idle');
-                idleAnim.tracks.splice(3, 3);
-                idleAnim.tracks.splice(9, 3);
-                const idle = mixer.clipAction(idleAnim);
-                idle.play();
-            },
-            ( xhr ) => {    
-                //console.log(xhr);
-            }, 
-            ( error ) => {
-                console.error(error);
-            }
-        );
+
+        //ADDING ELEMENTS
+        if(character){
+            let stacy_txt = new THREE.TextureLoader().load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy.jpg');
+
+            stacy_txt.flipY = false; // we flip the texture so that its the right way up
+    
+            const stacy_mtl = new THREE.MeshPhongMaterial({
+                map: stacy_txt,
+                color: 0xffffff
+            });
+        
+            loader.load(
+                modelPath,
+                ( gltf ) => {
+                    const model = gltf.scene;
+                    const fileAnimations = gltf.animations;
+                    model.traverse(o => {
+                        if (o.isMesh) {
+                            o.castShadow = true;
+                            o.receiveShadow = true;
+                            o.material = stacy_mtl;
+                        }
+                        // Reference the neck and waist bones
+                        if (o.isBone && o.name === 'mixamorigNeck') { 
+                            neck = o;
+                        }
+                        if (o.isBone && o.name === 'mixamorigSpine') { 
+                            waist = o;
+                        }
+                        });
+                    model.position.y = -1;
+                    scene.add(model);
+                    mixer = new THREE.AnimationMixer(model);
+                    const idleAnim = THREE.AnimationClip.findByName(fileAnimations, 'idle');
+                    idleAnim.tracks.splice(3, 3);
+                    idleAnim.tracks.splice(9, 3);
+                    const idle = mixer.clipAction(idleAnim);
+                    idle.play();
+                    props.incrementLoaded();
+                },
+                ( xhr ) => {    
+                    //console.log(xhr);
+                }, 
+                ( error ) => {
+                    console.error(error);
+                }
+            );
+        } else if(businessCard){
+            const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+            cube = new THREE.Mesh( geometry, material );
+            scene.add( cube );
+        }
 
         const lights = [];
         lights[ 0 ] = new THREE.PointLight( 0xffffff, 1, 0 );
@@ -100,7 +117,10 @@ const Scene = () => {
             if(mixer){
                 mixer.update(clock.getDelta());
             }
-    
+            if(businessCard){
+                cube.rotation.x += 0.01;
+				cube.rotation.y += 0.01;
+            }
             renderer.render( scene, camera );
             window.requestAnimationFrame(startAnimationLoop);
         }
@@ -173,8 +193,10 @@ const Scene = () => {
         }
 
         window.addEventListener("resize", handleWindowResize, false);
-        window.addEventListener('mousemove', follow);
-        window.addEventListener('touchmove', follow);
+        if(character){
+            window.addEventListener('mousemove', follow);
+            window.addEventListener('touchmove', follow);
+        }
         startAnimationLoop();
     }, []);
 
