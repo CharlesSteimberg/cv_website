@@ -1,7 +1,7 @@
 import './Header.scss';
 import {Link} from 'react-scroll';
 import {useState} from 'react';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logoColored.svg';
 
 const Header = () => {
   const [navClicked, setnavClicked] = useState(false);

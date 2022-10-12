@@ -14,6 +14,12 @@ const App = () => {
     setLoaded(loaded + 1);
   }
 
+  const welcomeProps = {
+    incrementLoaded: incrementLoaded,
+    loaded: loaded,
+    elementToLoad: elementToLoad
+   };
+
   const renderContent = () => {
     if (loaded < elementToLoad){
       document.body.style.overflow = "hidden";
@@ -24,7 +30,7 @@ const App = () => {
         </div>
       )
     } else {
-      document.body.style.overflow = "auto";
+      if(document.body.style.overflow === "hidden") document.body.style.overflow = "auto";
     }
   }
 
@@ -32,7 +38,7 @@ const App = () => {
     <div className="App">
       {renderContent()}
       <Header/>
-      <Welcome incrementLoaded={incrementLoaded}/>
+      <Welcome welcomeProps={welcomeProps}/>
       <Experience/>
       <Education/>
       <Contact incrementLoaded={incrementLoaded}/>

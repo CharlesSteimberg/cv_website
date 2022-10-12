@@ -22,11 +22,11 @@ const positions = [
   ];
 
 const styles = [
-    {id: "Exp01", z: 5, scale: 1, color: "rgb(209, 78, 91)"},
-    {id: "Exp02", z: 4, scale: 1, color: "#437697"},
-    {id: "Exp03", z: 3, scale: 1, color: "rgb(209, 78, 91)"},
-    {id: "Exp04", z: 2, scale: 1, color: "#437697"},
-    {id: "Exp05", z: 1, scale: 1, color: "#97c4c6"}
+    {id: "Exp01", z: 5, scale: 1, color: getComputedStyle(document.documentElement).getPropertyValue('--color-1')},
+    {id: "Exp02", z: 4, scale: 1, color: getComputedStyle(document.documentElement).getPropertyValue('--color-2')},
+    {id: "Exp03", z: 3, scale: 1, color: getComputedStyle(document.documentElement).getPropertyValue('--color-1')},
+    {id: "Exp04", z: 2, scale: 1, color: getComputedStyle(document.documentElement).getPropertyValue('--color-2')},
+    {id: "Exp05", z: 1, scale: 1, color: getComputedStyle(document.documentElement).getPropertyValue('--color-3')}
   ];
 
 const Experience = () => {

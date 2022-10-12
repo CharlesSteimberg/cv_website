@@ -15,7 +15,7 @@ const Scene = ({props}) => {
         const width = mount.current.clientWidth;
         const height = mount.current.clientHeight;
         const scene = new THREE.Scene();
-        const backgroundColor = 0x1B1B1D;
+        const backgroundColor = "#1B1B1D";
         scene.background = new THREE.Color(backgroundColor);
         const camera = new THREE.PerspectiveCamera(
             75, // fov = field of view
