@@ -31,8 +31,8 @@ const Scene = ({props}) => {
         // OrbitControls allow a camera to orbit around the object
         if(businessCard) {
             const controls = new OrbitControls( camera, mount.current )
-            controls.minDistance = 1;
-            controls.maxDistance = 8;
+            controls.enableZoom = false;
+            camera.position.z = 2;
         }; 
 
         const clock = new THREE.Clock();
@@ -78,7 +78,7 @@ const Scene = ({props}) => {
                         if (o.isBone && o.name === 'mixamorigSpine') { 
                             waist = o;
                         }
-                        });
+                    });
                     model.position.y = -1;
                     scene.add(model);
                     mixer = new THREE.AnimationMixer(model);
@@ -112,20 +112,16 @@ const Scene = ({props}) => {
                 businessCardModel,
                 ( gltf ) => {
                     cardModel = gltf.scene;
-                    const fileAnimations = gltf.animations;
                     cardModel.traverse(o => {
                         if (o.isMesh) {
                             o.castShadow = true;
                             o.receiveShadow = true;
                             o.material = card_mtl;
                         }
-                        });
-                    //cardModel.translateY = -1;
-                    //cardModel.translateX = 100;
-                    //cardModel.center();
+                    });
+                    cardModel.rotation.z = -1;
                     scene.add(cardModel);
                     props.incrementLoaded();
-                    //geometry.center();-
                 },
                 ( xhr ) => {    
                     //console.log(xhr);
@@ -154,9 +150,8 @@ const Scene = ({props}) => {
             if(mixer){
                 mixer.update(clock.getDelta());
             }
-            if(businessCard){
-                //cardModel.rotation.x += 0.01;
-				//cardModel.rotation.y += 0.01;
+            if(businessCard && cardModel){
+				cardModel.rotation.y += 0.001;
             }
             renderer.render( scene, camera );
             window.requestAnimationFrame(startAnimationLoop);
