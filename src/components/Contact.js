@@ -130,7 +130,6 @@ const Contact = ({incrementLoaded}) => {
     if(!currentAccount){
       setLoading(true);
       try {
-        setLoading(true);
         const { ethereum } = window;
         if (!ethereum) {
           alert('Get MetaMask!');
@@ -141,7 +140,8 @@ const Contact = ({incrementLoaded}) => {
         });
         setCurrentAccount(accounts[0]);
         if (contract){
-          contract.balanceOf(accounts[0]);
+          const txn = await contract.balanceOf(accounts[0], tokenId);
+          setHasNFT(txn == 0 ? false : true);
         }
         setLoading(false);
       } catch (error) {
@@ -163,7 +163,7 @@ const Contact = ({incrementLoaded}) => {
           data: data,
           to: CONTRACT_ADDRESS,
           from: currentAccount,
-          signatureType: "EIP712_SIGN",
+          signatureType: biconomy.PERSONAL_SIGN,
         };
         await provider.request({
           method: 'eth_sendTransaction',

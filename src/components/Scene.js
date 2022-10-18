@@ -1,7 +1,10 @@
 import {useRef, useEffect} from "react";
 import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader.js";
+import businessCardModel from "../assets/CharlesCard.glb";
+import businessCardAlbedo from "../assets/CardAlbedo.png";
+import businessCardNormalMap from "../assets/CardNormalMap.png";
 
 const modelPath = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy_lightweight.glb';
 
@@ -43,7 +46,7 @@ const Scene = ({props}) => {
         var mixer;
         var neck;
         var waist;
-        var cube;
+        var cardModel;
         const loader = new GLTFLoader();
 
         //ADDING ELEMENTS
@@ -94,10 +97,44 @@ const Scene = ({props}) => {
                 }
             );
         } else if(businessCard){
-            const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-            cube = new THREE.Mesh( geometry, material );
-            scene.add( cube );
+            const card_txt = new THREE.TextureLoader().load(businessCardNormalMap);
+            const card_alb = new THREE.TextureLoader().load(businessCardAlbedo);
+            card_txt.flipY = false;
+            card_alb.flipY = false;
+            const card_mtl = new THREE.MeshStandardMaterial({
+                normalMap: card_txt,
+                map: card_alb,
+                color: 0xffffff,
+                roughness: 0.6
+            });
+
+            loader.load(
+                businessCardModel,
+                ( gltf ) => {
+                    cardModel = gltf.scene;
+                    const fileAnimations = gltf.animations;
+                    cardModel.traverse(o => {
+                        if (o.isMesh) {
+                            o.castShadow = true;
+                            o.receiveShadow = true;
+                            o.material = card_mtl;
+                        }
+                        });
+                    //cardModel.translateY = -1;
+                    //cardModel.translateX = 100;
+                    //cardModel.center();
+                    scene.add(cardModel);
+                    props.incrementLoaded();
+                    //geometry.center();-
+                },
+                ( xhr ) => {    
+                    //console.log(xhr);
+                }, 
+                ( error ) => {
+                    console.error(error);
+                }
+            );
+           
         }
 
         const lights = [];
@@ -118,8 +155,8 @@ const Scene = ({props}) => {
                 mixer.update(clock.getDelta());
             }
             if(businessCard){
-                cube.rotation.x += 0.01;
-				cube.rotation.y += 0.01;
+                //cardModel.rotation.x += 0.01;
+				//cardModel.rotation.y += 0.01;
             }
             renderer.render( scene, camera );
             window.requestAnimationFrame(startAnimationLoop);
