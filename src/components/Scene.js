@@ -105,7 +105,7 @@ const Scene = ({props}) => {
                 normalMap: card_txt,
                 map: card_alb,
                 color: 0xffffff,
-                roughness: 0.6
+                normalScale: new THREE.Vector2( 0.3, 0.3 )
             });
 
             loader.load(
