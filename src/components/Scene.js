@@ -21,7 +21,7 @@ const Scene = ({props}) => {
         const backgroundColor = "#1B1B1D";
         scene.background = new THREE.Color(backgroundColor);
         const camera = new THREE.PerspectiveCamera(
-            75, // fov = field of view
+            50, // fov = field of view
             width / height, // aspect ratio
             0.1, // near plane
             1000 // far plane
@@ -32,7 +32,7 @@ const Scene = ({props}) => {
         if(businessCard) {
             const controls = new OrbitControls( camera, mount.current )
             controls.enableZoom = false;
-            camera.position.z = 2;
+            camera.position.z = 4;
         }; 
 
         const clock = new THREE.Clock();
@@ -151,7 +151,7 @@ const Scene = ({props}) => {
                 mixer.update(clock.getDelta());
             }
             if(businessCard && cardModel){
-				cardModel.rotation.y += 0.001;
+				cardModel.rotation.y += 0.005;
             }
             renderer.render( scene, camera );
             window.requestAnimationFrame(startAnimationLoop);

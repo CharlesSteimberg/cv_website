@@ -1,6 +1,7 @@
 import './Welcome.scss';
 import Typer from './Typer';
 import Scene from './Scene';
+import {useState} from 'react';
 
 const Welcome = ({welcomeProps}) => {
 

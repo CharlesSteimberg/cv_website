@@ -8,10 +8,12 @@ import {useState} from 'react';
 
 const App = () => {
   const [loaded, setLoaded] = useState(0);
-  const elementToLoad = 1;
+  const elementToLoad = 2;
+  var called = false;
 
   const incrementLoaded = () => {
-    setLoaded(loaded + 1);
+    if (!called) called = true
+    else setLoaded(2); //To be cleaned
   }
 
   const welcomeProps = {
