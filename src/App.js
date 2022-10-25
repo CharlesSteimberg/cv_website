@@ -7,23 +7,21 @@ import Contact from './components/Contact';
 import {useState} from 'react';
 
 const App = () => {
-  const [loaded, setLoaded] = useState(0);
-  const elementToLoad = 2;
-  var called = false;
+  const [loaded, setLoaded] = useState(false);
+  var elementToLoad = 2;
 
   const incrementLoaded = () => {
-    if (!called) called = true
-    else setLoaded(2); //To be cleaned
+    elementToLoad = elementToLoad - 1;
+    if (elementToLoad === 0) setLoaded(true);
   }
 
   const welcomeProps = {
     incrementLoaded: incrementLoaded,
-    loaded: loaded,
-    elementToLoad: elementToLoad
+    loaded: loaded
    };
 
   const renderContent = () => {
-    if (loaded < elementToLoad){
+    if (!loaded){
       document.body.style.overflow = "hidden";
       return(
         <div className="Loading-Screen">

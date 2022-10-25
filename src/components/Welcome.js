@@ -11,7 +11,7 @@ const Welcome = ({welcomeProps}) => {
    };
 
   const renderContent = () => {
-    if(welcomeProps.loaded === welcomeProps.elementToLoad){
+    if(welcomeProps.loaded){
       return(
         <div className="Intro">
           <Typer
