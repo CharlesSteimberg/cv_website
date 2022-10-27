@@ -269,8 +269,8 @@ const Experience = () => {
             <h2 className="ExperienceName">Transformation Engineer</h2>
             <h4 className="ExperienceDate">GE Healthcare, Paris<br/>Jul. 2017 - Nov. 2017</h4>
             <p>
-            Developped methodologies and devices to smooth the production lines of the mammograph.<br/>
-            Scoped and developped an MVP of a test bench for the new mammograph scanner Pristina.<br/>
+            Developed methodologies and devices to smooth the production lines of the mammograph.<br/>
+            Scoped an MVP of a test bench for the new mammograph scanner Pristina.<br/>
             </p>
           </div>
         </div>
@@ -286,7 +286,7 @@ const Experience = () => {
             <h2 className="ExperienceName">Internship R&D Engineer</h2>
             <h4 className="ExperienceDate">MyBrain Technologies, Paris<br/>Jul. 2015 - Jul. 2016</h4>
             <p>
-              Headed desig et developpement of electrodes & test bench for electroencephalogram.<br/>
+              Headed design and production of electrodes & test bench for an electroencephalogram.<br/>
               Conducted data analysis to determine customers' trends.<br/>
             </p>
           </div>
