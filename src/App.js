@@ -8,7 +8,7 @@ import {useState} from 'react';
 
 const App = () => {
   const [loaded, setLoaded] = useState(false);
-  var elementToLoad = 2;
+  var elementToLoad = 1;
 
   const incrementLoaded = () => {
     elementToLoad = elementToLoad - 1;
@@ -16,7 +16,6 @@ const App = () => {
   }
 
   const welcomeProps = {
-    incrementLoaded: incrementLoaded,
     loaded: loaded
    };
 
