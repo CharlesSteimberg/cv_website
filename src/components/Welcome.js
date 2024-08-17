@@ -9,7 +9,7 @@ const Welcome = ({welcomeProps}) => {
         <div className="Intro">
           <Typer
             strings={[
-              "Hello, I am Charles Steimberg 👋\n\nI am looking for a job in product management.\n\nI have two master's degrees, in corporate strategy\nand software engineering 🖥.\n\nI've worked for the past 5 years in Data and IT \nProduct Management 👔, including 4 years in\nthe private banking industry.\n\nScroll down to check my resume and get a\nWeb3 surprise 🎁 in the Contact section!"
+              "Hello, I am Charles Steimberg 👋\n\nI am looking for a job in Data/IT management.\n\nI have two master's degrees, in corporate strategy\nand software engineering 🖥.\n\nI've worked for the past 7 years as a consultant \n in Data and IT program and product management 👔. \n\nScroll down to see my resume and get a\nWeb3 surprise 🎁 in the Contact section!"
             ]}
           />
         </div>
